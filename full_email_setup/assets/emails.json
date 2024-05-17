@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "subject": "Meeting Reminder",
+    "sender": "boss@example.com",
+    "body": "Don't forget the meeting at 10 AM."
+  },
+  {
+    "id": 2,
+    "subject": "Weekly Report",
+    "sender": "colleague@example.com",
+    "body": "Please send the weekly report by EOD."
+  },
+  {
+    "id": 3,
+    "subject": "Lunch Invitation",
+    "sender": "friend@example.com",
+    "body": "Let's have lunch tomorrow at 1 PM."
+  },
+  {
+    "id": 4,
+    "subject": "Project Update",
+    "sender": "manager@example.com",
+    "body": "We need to discuss the latest project updates in the meeting."
+  },
+  {
+    "id": 5,
+    "subject": "Important Announcement",
+    "sender": "ceo@example.com",
+    "body": "An important announcement will be made during the town hall meeting."
+  },
+  {
+    "id": 6,
+    "subject": "Task Assignment",
+    "sender": "teamlead@example.com",
+    "body": "You've been assigned a new task. Please check your dashboard."
+  },
+  {
+    "id": 7,
+    "subject": "Training Session",
+    "sender": "hr@example.com",
+    "body": "A training session on new policies will be held next week."
+  },
+  {
+    "id": 8,
+    "subject": "Feedback Request",
+    "sender": "supervisor@example.com",
+    "body": "Please provide feedback on the recent project."
+  },
+  {
+    "id": 9,
+    "subject": "Vacation Request",
+    "sender": "teammate@example.com",
+    "body": "I'll be on vacation next week. Please assign my tasks accordingly."
+  },
+  {
+    "id": 10,
+    "subject": "Product Demo",
+    "sender": "sales@example.com",
+    "body": "A product demo has been scheduled for next Monday."
+  },
+  {
+    "id": 11,
+    "subject": "Performance Review",
+    "sender": "hr@example.com",
+    "body": "Your performance review is due next month. Prepare accordingly."
+  },
+  {
+    "id": 12,
+    "subject": "New Project Proposal",
+    "sender": "client@example.com",
+    "body": "We've received a new project proposal from the client. Please review."
+  },
+  {
+    "id": 13,
+    "subject": "Team Meeting",
+    "sender": "teamlead@example.com",
+    "body": "Our team meeting is scheduled for tomorrow at 2 PM."
+  },
+  {
+    "id": 14,
+    "subject": "Feedback Review",
+    "sender": "manager@example.com",
+    "body": "Feedback from the recent project has been reviewed. Please check your inbox."
+  },
+  {
+    "id": 15,
+    "subject": "Conference Invitation",
+    "sender": "conference@example.com",
+    "body": "You've been invited to speak at the upcoming conference."
+  },
+  {
+    "id": 16,
+    "subject": "Project Deadline Extension",
+    "sender": "client@example.com",
+    "body": "The client has requested an extension for the project deadline."
+  },
+  {
+    "id": 17,
+    "subject": "Team Building Activity",
+    "sender": "hr@example.com",
+    "body": "A team building activity has been planned for next Friday."
+  },
+  {
+    "id": 18,
+    "subject": "New Product Launch",
+    "sender": "marketing@example.com",
+    "body": "The new product launch event is scheduled for next month."
+  },
+  {
+    "id": 19,
+    "subject": "Budget Review Meeting",
+    "sender": "finance@example.com",
+    "body": "A budget review meeting will be held next week."
+  },
+  {
+    "id": 20,
+    "subject": "Customer Complaint",
+    "sender": "customer@example.com",
+    "body": "We've received a complaint from a customer. Please address it."
+  },
+  {
+    "id": 21,
+    "subject": "New Feature Proposal",
+    "sender": "product@example.com",
+    "body": "A proposal for a new feature has been submitted. Please review."
+  },
+  {
+    "id": 22,
+    "subject": "Team Outing",
+    "sender": "teamlead@example.com",
+    "body": "Our team outing is planned for next Saturday."
+  },
+  {
+    "id": 23,
+    "subject": "Company Policy Update",
+    "sender": "hr@example.com",
+    "body": "Updates to company policies have been announced. Please review the changes."
+  },
+  {
+    "id": 24,
+    "subject": "Project Kickoff Meeting",
+    "sender": "projectlead@example.com",
+    "body": "The project kickoff meeting is scheduled for next Monday."
+  },
+  {
+    "id": 25,
+    "subject": "Technical Issue",
+    "sender": "support@example.com",
+    "body": "A technical issue has been reported. Please investigate."
+  }
+]
