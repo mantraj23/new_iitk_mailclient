@@ -1,43 +1,87 @@
 import 'package:flutter/material.dart';
-import 'emails_list/email_list_view.dart' ;
-import 'emails_list/email_model.dart' ;
-import 'emails_list/email_service.dart' ;
+import 'package:enough_mail/enough_mail.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import "./emails_list/mail_view_screen.dart" ;
+import "../backend/sendMail.dart" ;
 
 class InboxScreen extends StatefulWidget {
-  const InboxScreen({super.key}) ;
   @override
-  State<InboxScreen> createState() => _InboxScreenState();
+  _InboxScreenState createState() => _InboxScreenState();
 }
 
 class _InboxScreenState extends State<InboxScreen> {
-  late Future<List<Email>> emails;
+  bool _isLoading = true;
+  List<MimeMessage> _messages = [];
+  String? _error;
 
   @override
   void initState() {
     super.initState();
-    emails = EmailService().loadEmails();
+    _fetchEmails();
+  }
+
+  Future<void> _fetchEmails() async {
+    try {
+      final messages = await FetchMail();
+      setState(() {
+        _messages = messages;
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _error = 'An error occurred: $e';
+        _isLoading = false;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Inbox'),
+        title: Text('Inbox'),
       ),
-      body: FutureBuilder<List<Email>>(
-        future: emails,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No emails found.'));
-          } else {
-            return EmailListView(emails: snapshot.data!);
-          }
-        },
-      ),
+      body: _isLoading
+          ? Center(
+              child: SpinKitCircle(
+                color: Colors.blue,
+                size: 50.0,
+              ),
+            )
+          : _error != null
+              ? Center(
+                  child: Text(_error!),
+                )
+              : ListView.builder(
+                  itemCount: _messages.length,
+                  itemBuilder: (context, index) {
+                    final message = _messages[index];
+                    final subject = message.decodeSubject() ?? 'No Subject';
+                    final snippet = message.decodeTextPlainPart()?.substring(0, 50) ?? 'No Text Body';
+                    final from = message.from?.isNotEmpty == true ? message.from!.first.email : 'U';
+                    final avatarLetter = from.isNotEmpty ? from[0].toUpperCase() : 'U';
+
+                    return ListTile(
+                      leading: CircleAvatar(
+                        child: Text(avatarLetter),
+                      ),
+                      title: Text(subject),
+                      subtitle: Text(
+                        snippet,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MailViewScreen(message: message),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
     );
   }
 }
