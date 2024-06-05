@@ -4,13 +4,17 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This is my email list view
+![This is my email list view](https://github.com/mantraj23/new_iitk_mailclient/assets/154123657/5140df7d-c602-47e2-802a-f18ec475aab8)
 
-A few resources to get you started if this is your first Flutter project:
+This is the View of the Sidebar
+![This is the View of the Sidebar](https://github.com/mantraj23/new_iitk_mailclient/assets/154123657/2442c9ce-37f6-4f51-99bb-2fcec794698c)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+I have created a search toggler icon which when clicked open a search bar below the app bar
+![I have created a search toggler icon which when clicked open a search bar below the app bar](https://github.com/mantraj23/new_iitk_mailclient/assets/154123657/4b691bd9-eabe-44a2-b87b-4d2673107ed1)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This is the Setttings screen
+![This is the Setttings screen](https://github.com/mantraj23/new_iitk_mailclient/assets/154123657/d4c04e3e-d4ec-4465-ad99-7d550e6752cb)
+
+This is the compose Screen
+![This is the compose Screen](https://github.com/mantraj23/new_iitk_mailclient/assets/154123657/3c3bdad2-da6b-43d8-b1d9-c6409c808adf)
