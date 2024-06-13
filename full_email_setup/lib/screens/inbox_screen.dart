@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:enough_mail/enough_mail.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import "./emails_list/mail_view_screen.dart" ;
-import "../backend/sendMail.dart" ;
+import '../models/email.dart';
+import '../objectbox.dart'; // Import ObjectBox initialization
+import '../backend/fetchmail.dart'; // Updated fetchAllEmails function
+import '../main.dart' ;
 
 class InboxScreen extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class InboxScreen extends StatefulWidget {
 
 class _InboxScreenState extends State<InboxScreen> {
   bool _isLoading = true;
-  List<MimeMessage> _messages = [];
+  List<Email> _emails = [];
   String? _error;
 
   @override
@@ -22,9 +23,9 @@ class _InboxScreenState extends State<InboxScreen> {
 
   Future<void> _fetchEmails() async {
     try {
-      final messages = await FetchMail();
+      await fetchAllEmails(); // Fetch and store all emails
       setState(() {
-        _messages = messages;
+        _emails = objectbox.emailBox.getAll(); // Get all emails from ObjectBox
         _isLoading = false;
       });
     } catch (e) {
@@ -52,14 +53,16 @@ class _InboxScreenState extends State<InboxScreen> {
               ? Center(
                   child: Text(_error!),
                 )
-              : ListView.builder(
-                  itemCount: _messages.length,
-                  itemBuilder: (context, index) {
-                    final message = _messages[index];
-                    final subject = message.decodeSubject() ?? 'No Subject';
-                    final snippet = message.decodeTextPlainPart()?.substring(0, 50) ?? 'No Text Body';
-                    final from = message.from?.isNotEmpty == true ? message.from!.first.email : 'U';
-                    final avatarLetter = from.isNotEmpty ? from[0].toUpperCase() : 'U';
+              : ListView(
+                  children: _emails.reversed.map((email) {
+                    final subject = email.subject;
+                    final snippet = email.body.length > 20
+                        ? email.body.substring(0, 20)
+                        : email.body; // Ensure the body length is valid
+                    final from = email.from;
+                    final number = email.id ;
+                    final avatarLetter =
+                        from.isNotEmpty ? from[0].toUpperCase() : 'U';
 
                     return ListTile(
                       leading: CircleAvatar(
@@ -71,16 +74,13 @@ class _InboxScreenState extends State<InboxScreen> {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
+                      trailing: Text('$number'),
+                      
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MailViewScreen(message: message),
-                          ),
-                        );
+                        // Handle on tap
                       },
                     );
-                  },
+                  }).toList(),
                 ),
     );
   }

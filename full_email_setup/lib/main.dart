@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart' ;
 import 'screens/homescreen.dart' ;
+import "./objectbox.dart" ;
 
-void main() {
+late ObjectBox objectbox ;
+
+Future<void> main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  objectbox = await ObjectBox.create() ;
   runApp(const MyApp());
 }
 
@@ -24,4 +30,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
